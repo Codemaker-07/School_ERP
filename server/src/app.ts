@@ -1,5 +1,5 @@
 import express from 'express';
-import connect from './db';
+import connect from './config/db';
 
 const app = express();
 
