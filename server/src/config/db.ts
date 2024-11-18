@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 async function connect() {
     try {
-        await mongoose.connect("mongodb+srv://nova:nova2346@nova.r5lap4p.mongodb.net/?retryWrites=true&w=majority&appName=nova");
+        await mongoose.connect(process.env.mongo_uri as string);
         console.log("Connected to database");
     } catch (error) {
         console.log("Error connecting to database: ", error);
