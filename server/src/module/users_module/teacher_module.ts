@@ -6,11 +6,11 @@ const Pair = new mongoose.Schema({
 });
 
 const teacherSchema = new mongoose.Schema({
+    id : {type: String,required: true,unique: true},
     firstname: {type: String,required: true,},
     lastname: {type: String,required: true,},
-    id : {type: String,required: true,unique: true},
     password: {type: String,required: true},
-    Gender :{type: String,required: true},
+    gender :{type: String,required: true},
     subject: {type: String,required: true},
     classid: {type: String,required: true},
     contactinfo: { Array:[{type: Pair}]},

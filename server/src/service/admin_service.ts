@@ -1,5 +1,4 @@
 import { add_admin , get_by_id , update_admin , delete_admin} from "../dal/admins";
-import Admin from "../module/admin_module/admin_module";
 import { generateToken } from "../utils/token";
 
 function admin_signup_service(req: any, res: any): any {
