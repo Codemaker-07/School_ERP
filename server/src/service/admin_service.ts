@@ -1,5 +1,5 @@
 import { add_admin , get_by_id , update_admin , delete_admin} from "../dal/admins";
-import { generateToken } from "../utils/token";
+import { generateToken } from "../utils/admin_token";
 
 function admin_signup_service(req: any, res: any): any {
     if (check_input(req.body)){
@@ -28,8 +28,8 @@ async function admin_login_service(req: any, res: any): Promise<any> {
             res.status(400).json({ error: 'Incorrect password' });
         } else {
             console.log("Admin logged in successfully");
-            const token = generateToken({ adminid: admin_ob.adminid }); // Assuming the token needs admin ID
-            res.json({ token });
+            const token = generateToken({ adminid: admin_ob.adminid });
+            res.status(200).json({ token });
         }
     }else {
         console.log(" ( X ) Request body is undefined");
@@ -65,14 +65,15 @@ async function admin_update_service(req: any, res: any): Promise<any> {
 async function admin_delete_service(req: any, res: any): Promise<any> {
     try {
         const adminid = req.body.adminid;
-        
+        if (!adminid) {
+            console.log("id not found :", adminid);
+            return res.status(404).json({ error: 'id not found' });
+        }
         const data = delete_admin(adminid); 
-
         if (!data) {
             console.log("Admin not found with adminid:", adminid);
             return res.status(404).json({ error: 'Admin not found' });
         }
-
         console.log("Admin deleted");
         res.status(200).json({ message: 'Admin deleted successfully', data });
         return;

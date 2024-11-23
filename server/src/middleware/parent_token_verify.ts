@@ -1,6 +1,6 @@
-import { verifyToken } from "../utils/admin_token";
+import { verifyToken } from "../utils/parent_token";
 
-const adminTokenVerify = (req: any, res: any, next: any) => {
+const parentTokenVerify = (req: any, res: any, next: any) => {
     const token = req.headers.authorization?.split(' ')[1];
 
     if (!token) {
@@ -12,8 +12,8 @@ const adminTokenVerify = (req: any, res: any, next: any) => {
         return res.status(401).json({ error: "Invalid token" });
     }
 
-    req.body.admin = decoded;
+    req.body.parent = decoded;
     next();
 };
 
-export default adminTokenVerify;
+export default parentTokenVerify;

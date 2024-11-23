@@ -5,7 +5,7 @@ async function get_by_id(adminid : string):Promise<any>{
     const existingAdmin = await Admin.findOne({ adminid });
 
     if (!existingAdmin) {
-        return existingAdmin;
+        return false;
     } else {
         return existingAdmin;
     }
