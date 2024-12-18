@@ -6,7 +6,7 @@ const Pair = new mongoose.Schema({
 });
 
 const Parent = new mongoose.Schema({
-    parentid: {type: String, required: true},
+    parentid: {type: String, required: true ,unique: true},
     firstname: {type: String, required: true},
     lastname: {type: String, required: true},
     password: {type: String, required: true},
@@ -14,6 +14,6 @@ const Parent = new mongoose.Schema({
     Studentid: {type: String, required: true}
 });
 
-const parent_model = mongoose.model("Parent", Parent);
+const parent = mongoose.model("Parent", Parent);
 
-export default parent_model;
+export default parent;
