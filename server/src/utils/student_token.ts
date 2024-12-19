@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const secret = 'parent_secret'; 
+const secret = 'student_secret'; 
 
 const generateToken = (payload: any) => {
   return jwt.sign(payload, secret);
