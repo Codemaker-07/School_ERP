@@ -1,6 +1,6 @@
-import { verifyToken } from "../utils/parent_token";
+import { verifyToken } from "../utils/student_token";
 
-const parentTokenVerify = (req: any, res: any, next: any) => {
+const studentTokenVerify = (req: any, res: any, next: any) => {
     const token = req.headers.authorization?.split(' ')[1];
 
     if (!token) {
@@ -16,4 +16,4 @@ const parentTokenVerify = (req: any, res: any, next: any) => {
     next();
 };
 
-export default parentTokenVerify;
+export default studentTokenVerify;
